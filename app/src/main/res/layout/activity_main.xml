@@ -12,6 +12,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Shake to get toast and switch color"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#fcfbfb" />
 </RelativeLayout>

@@ -9,7 +9,10 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -47,23 +50,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         long actualTime = System.currentTimeMillis();
         if (accelationSquareRoot >= 2) //
         {
+
+            Random aa = new Random();
+            int ran = aa.nextInt(100);
+            TextView tet = (TextView)findViewById(R.id.textView);
+            tet.setText(String.valueOf(ran));
             if (actualTime - lastUpdate < 200) {
-                return;
+               return;
             }
             lastUpdate = actualTime;
-            Toast.makeText(this, "Device was shuffled", Toast.LENGTH_SHORT)
-                    .show();
-            if (color) {
+            //Toast.makeText(this, "Device was shuffled", Toast.LENGTH_SHORT)
+                    //.show();
+            if (accelationSquareRoot <= 3) {
                 view.setBackgroundColor(Color.GREEN);
 
-            } else {
-                view.setBackgroundColor(Color.RED);
             }
-            color = !color;
-        }
-        else{
-            Toast.makeText(this, "Device was not shuffled", Toast.LENGTH_SHORT)
-                    .show();
+            if (accelationSquareRoot >=5  && accelationSquareRoot <= 7){
+               view.setBackgroundColor(Color.RED);
+            }
+            if (accelationSquareRoot >7){
+                view.setBackgroundColor(Color.BLUE);
+            }
+
+           // color = !color;
+        //}
+
+            //Toast.makeText(this, "Device was not shuffled", Toast.LENGTH_SHORT)
+                  //  .show();
         }
     }
 
